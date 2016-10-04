@@ -11,17 +11,21 @@ def sort_ratings(restaurant_file):
             alpha_ratings[restaurant_name] = restaurant_rating
 
 
-        new_restaurant = raw_input("What is the name of the restaurant that are rating?: ")
+        while True:
+            user_response = raw_input("Would you like to See the ratings, Enter your own, or Quit? ")
 
-        alpha_ratings[new_restaurant] = int(raw_input ("What rating would you give this restaurant?: "))
+            if user_response == "E":
 
-        alpha_ratings = sorted(alpha_ratings.items())        
+                new_restaurant = raw_input("What is the name of the restaurant that are rating?: ")
+                alpha_ratings[new_restaurant] = int(raw_input ("What rating would you give this restaurant?: "))
 
-        for restaurant_info in alpha_ratings:
-            sorted_restaurant_name = restaurant_info[0]
-            sorted_restaurant_rating = int(restaurant_info[1])
+            elif user_response == "S":
+                alpha_ratings = sorted(alpha_ratings.items())        
 
-            print "%s is rated at %d." % (sorted_restaurant_name, sorted_restaurant_rating)
+                for restaurant_info in alpha_ratings:
+                    print "%s is rated at %d." % (restaurant_info[0], int(restaurant_info[1]))
 
+            elif user_response == "Q":
+                break
 
 sort_ratings("scores.txt")
